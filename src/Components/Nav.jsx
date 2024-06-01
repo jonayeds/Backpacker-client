@@ -1,7 +1,17 @@
 import { GoDotFill } from "react-icons/go";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import useAuth from "../customHooks/useAuth";
 
 const Nav = () => {
+    const {auth,logOut} = useAuth()
+    const user = auth.currentUser
+    const navigate = useNavigate()
+    const handleLogOut = ()=>{
+        logOut()
+        .then(()=>{
+          navigate('/')
+        })
+      }
     const navigation = <>
     <NavLink to={'/'} className={({isActive})=> isActive? 'text-[#347d87] hover:scale-110 duration-200 font-semibold': 'hover:scale-110 duration-200'}><li><a>Home</a></li></NavLink>
     <NavLink to={'/community'}  className={({isActive})=> isActive? 'text-[#347d87] hover:scale-110 duration-200 font-semibold': 'hover:scale-110 duration-200'}><li><a>Community</a></li></NavLink>
@@ -33,11 +43,20 @@ const Nav = () => {
     </ul>
   </div>
   <div className="navbar-end">
-  <Link  to={'/login'} href="#_" className="relative px-6 py-3 font-bold text-white group">
-<span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-[#cbb164] group-hover:translate-x-0 group-hover:translate-y-0"></span>
-<span className="absolute inset-0 w-full h-full border-4 border-gray-400"></span>
-<span className="relative">Log in</span>
-</Link>
+    {
+        user? <div>
+            <button onClick={handleLogOut}   className="relative px-6 py-3 font-bold text-white group">
+        <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-[#cbb164] group-hover:translate-x-0 group-hover:translate-y-0"></span>
+        <span className="absolute inset-0 w-full h-full border-4 border-gray-400"></span>
+        <span className="relative">Log Out</span>
+        </button>
+        </div> :  <Link  to={'/login'} href="#_" className="relative px-6 py-3 font-bold text-white group">
+        <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-[#cbb164] group-hover:translate-x-0 group-hover:translate-y-0"></span>
+        <span className="absolute inset-0 w-full h-full border-4 border-gray-400"></span>
+        <span className="relative">Log in</span>
+        </Link>
+    }
+ 
   </div>
 </div>
     );
