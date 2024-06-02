@@ -9,6 +9,12 @@ import Blogs from "../pages/Blogs";
 import About from "../pages/About";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
+import Dashboard from "../pages/Dashboard";
+import PrivateRoutes from "./PrivateRoutes";
+import MyProfile from "../pages/dashboard/MyProfile";
+import MyWishlist from "../pages/dashboard/MyWishlist";
+import MyBookings from "../pages/dashboard/MyBookings";
+import Request from "../pages/dashboard/Request";
 
   const router = createBrowserRouter([
     {
@@ -45,5 +51,27 @@ import Signup from "../pages/Signup";
         },
       ]
     },
+    {
+      path:'/dashboard',
+      element: <PrivateRoutes><Dashboard></Dashboard></PrivateRoutes>,
+      children:[
+        {
+          path:'/dashboard/myProfile',
+          element: <MyProfile></MyProfile>
+        },
+        {
+          path:'/dashboard/bookings',
+          element: <MyBookings></MyBookings>
+        },
+        {
+          path:'/dashboard/wishlist',
+          element: <MyWishlist></MyWishlist>
+        },
+        {
+          path:'/dashboard/request',
+          element: <Request></Request>
+        },
+      ]
+    }
   ]);
   export default router

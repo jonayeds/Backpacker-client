@@ -44,7 +44,16 @@ const Nav = () => {
   </div>
   <div className="navbar-end">
     {
-        user? <div>
+        user? <div className="flex gap-8 ">
+          <div className="dropdown">
+  <div tabIndex={0} role="button" className="w-12 h-12 bg-gray-200 rounded-full m-1"><img src={user?.photoURL} className="w-full rounded-full border-green-400 border-2" alt="" /></div>
+  <ul tabIndex={0} className="dropdown-content  z-[1] menu p-2 shadow bg-base-200 rounded-box w-max">
+    <li className="font-semibold opacity-70">{user.displayName}</li>
+    <li className="font-semibold opacity-70 text-sm">{user.email}</li>
+    <NavLink to={'/dashboard'} className={'text-[#5a9097] font-semibold'}><li><a>Dashboard</a></li></NavLink>
+    <li><a>Offer Announcements</a></li>
+  </ul>
+</div>
             <button onClick={handleLogOut}   className="relative px-6 py-3 font-bold text-white group">
         <span className="absolute inset-0 w-full h-full transition duration-300 ease-out transform -translate-x-2 -translate-y-2 bg-[#cbb164] group-hover:translate-x-0 group-hover:translate-y-0"></span>
         <span className="absolute inset-0 w-full h-full border-4 border-gray-400"></span>
