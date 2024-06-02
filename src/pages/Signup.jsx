@@ -1,15 +1,44 @@
 import { useState } from "react";
-import { FaEye, FaRegEyeSlash } from "react-icons/fa";
+import { FaEye, FaGoogle, FaRegEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import useauth from "../customHooks/useAuth"
 import Swal from "sweetalert2";
+import useAuth from "../customHooks/useAuth";
 const Signup = () => {
-    const {createUser, update } = useauth()
+    const {createUser, update, googleLogin} = useAuth()
+    
     const [show, setShow] = useState(false)
 	const handleShow = ()=>{
 		setShow(!show)
 	}
     const navigate = useNavigate()
+    const handelGoogleLogin = ()=>{
+        googleLogin()
+        .then((result) => {
+            const email = result.user?.email
+            const name = result.user?.displayName
+
+			Swal.fire({
+				title: 'Successful',
+				text: 'Log In Successful',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+            fetch('http://localhost:5000/users', {
+                method:'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify({email, name})
+            })
+            .then(res=> res.json())
+            .then(data=>{
+                console.log(data)
+            })
+			navigate('/')
+			
+			
+		})
+    }
     const handleSignUp = e =>{
         e.preventDefault()
         const form = e.target
@@ -29,6 +58,17 @@ const Signup = () => {
 				icon: 'success',
 				confirmButtonText: 'OK'
 			})
+            fetch('http://localhost:5000/users', {
+                method:'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify({email, name})
+            })
+            .then(res=> res.json())
+            .then(data=>{
+                console.log(data)
+            })
 			navigate('/')
 			console.log(result)
 			
@@ -84,6 +124,17 @@ const Signup = () => {
 </span>
 <span className="relative mx-auto">Sign Up</span>
 </button>
+                <div className="my-6 space-y-4">
+        <button onClick={handelGoogleLogin} aria-label="Login with Google" type="button" className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 group">
+            
+                
+        <FaGoogle  className="group-hover:text-[#65a5ac]"/>
+            
+            <p>Login with Google</p>
+        </button>
+       
+       
+    </div>
         </form>
         </div>
     );

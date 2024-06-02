@@ -40,9 +40,10 @@ const MyProfile = () => {
     Add Your Story
 </h1>
 <form action="" className="" >
-    <textarea name="" id="" placeholder="Write Your Story Here" className="p-4 h-52 w-96 rounded-xl bg-gray-200 focus:outline-none border-2 border-[#23575C] border-opacity-30 text-[#23575C] text-opacity-80">
+    <textarea name="" id="" placeholder="Write Your Story Here" className="p-4 h-52 w-96 rounded-xl bg-gray-100 focus:outline-none border-2 border-[#23575C] border-opacity-10 text-[#23575C] text-opacity-80">
 
     </textarea>
+    <button className="block mx-auto mt-2  px-4 py-2 bg-gray-100 duration-500 shadow-xl hover:shadow-md text-[#23575C] font-bold text-opacity-70 mb-10">Submit</button>
 </form>
         </div>
     );

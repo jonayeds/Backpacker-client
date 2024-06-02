@@ -15,13 +15,27 @@ const Signin = () => {
     const navigate = useNavigate()
     const handelGoogleLogin = ()=>{
         googleLogin()
-        .then(() => {
+        .then((result) => {
+            const email = result.user?.email
+            const name = result.user?.displayName
+
 			Swal.fire({
 				title: 'Successful',
 				text: 'Log In Successful',
 				icon: 'success',
 				confirmButtonText: 'OK'
 			})
+            fetch('http://localhost:5000/users', {
+                method:'POST',
+                headers: {
+                    'content-type' : 'application/json'
+                },
+                body: JSON.stringify({email, name})
+            })
+            .then(res=> res.json())
+            .then(data=>{
+                console.log(data)
+            })
 			navigate('/')
 			
 			
