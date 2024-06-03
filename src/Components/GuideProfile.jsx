@@ -1,26 +1,16 @@
-import { useEffect, useState } from "react";
-import useAuth from "../../customHooks/useAuth";
+import { useLoaderData } from "react-router-dom";
 
-const MyProfile = () => {
-    const {auth}  = useAuth()
-    const user = auth.currentUser
-	const [role,  setRole] = useState('')
-	useEffect(()=>{
-	fetch(`http://localhost:5000/users/${user?.email}`)
-	.then(res=> res.json())
-	.then(data=>{
-		console.log(data)
-		setRole(data.role)  
-	})
-	},[user])
+const GuideProfile = () => {
+    const guide = useLoaderData()
+    console.log(guide)
     return (
-        <div className="mt-12 w-full flex items-center flex-col">
+        <div className="mx-auto w-max mt-32">
             <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
-	<img src={user.photoURL} alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
+	<img src={guide.photo} alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
 	<div className="space-y-4 text-center divide-y dark:divide-gray-300">
 		<div className="my-2 space-y-1">
-			<h2 className="text-xl font-semibold sm:text-2xl">{user.displayName}</h2>
-			<p className="px-5 text-xs sm:text-base dark:text-gray-600">{user.email}</p>
+			<h2 className="text-xl font-semibold sm:text-2xl">{guide.name}</h2>
+			<p className="px-5 text-xs sm:text-base dark:text-gray-600 text-center">{guide.email}</p>
 		</div>
 		<div className="flex justify-center pt-2 space-x-4 align-center">
 			<a rel="noopener noreferrer" href="#" aria-label="GitHub" className="p-2 rounded-md dark:text-gray-800 hover:text-[#23575C]">
@@ -46,22 +36,8 @@ const MyProfile = () => {
 		</div>
 	</div>
 </div>
-{
-	(role === 'tourist') && <div className="">
-	<h1 className="mt-12 mb-6 text-4xl logo text-center text-[#23575C] font-bold"> 
-		Add Your Story
-	</h1>
-	<form action="" className="" >
-		<textarea name="" id="" placeholder="Write Your Story Here" className="p-4 h-52 w-96 rounded-xl bg-gray-100 focus:outline-none border-2 border-[#23575C] border-opacity-10 text-[#23575C] text-opacity-80">
-	
-		</textarea>
-		<button className="block mx-auto mt-2  px-4 py-2 bg-gray-100 duration-500 shadow-xl hover:shadow-md text-[#23575C] font-bold text-opacity-70 mb-10">Submit</button>
-	</form>
-	</div>
-}
-
         </div>
     );
 };
 
-export default MyProfile;
+export default GuideProfile;

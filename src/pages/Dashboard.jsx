@@ -42,13 +42,16 @@ const Dashboard = () => {
             <div>
               <h2 className="text-lg font-semibold">{user.displayName}</h2>
               <span className="flex items-center space-x-1">
-                <NavLink to={'/dashboard/myProfile'}
+                
+                  <NavLink to={'/dashboard/myProfile'}
                   rel="noopener noreferrer"
                   href="#"
                   className={({isActive})=> isActive? 'text-[#23575C] duration-200 font-semibold text-sm hover:underline': 'text-sm hover:underline'}
                 >
                   My profile
                 </NavLink>
+                
+                
               </span>
             </div>
           </div>

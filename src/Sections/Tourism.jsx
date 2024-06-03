@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Overview from '../Components/Overview';
 import Packages from '../Components/Packages';
+import MeetGuides from '../Components/MeetGuides';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -71,7 +72,7 @@ export default function BasicTabs() {
         <Packages></Packages>
       </CustomTabPanel>
       <CustomTabPanel value={value} index={2}>
-        Item Three
+        <MeetGuides></MeetGuides>
       </CustomTabPanel>
     </Box>
   );

@@ -16,6 +16,7 @@ import MyWishlist from "../pages/dashboard/MyWishlist";
 import MyBookings from "../pages/dashboard/MyBookings";
 import Request from "../pages/dashboard/Request";
 import PackageDetails from "../pages/PackageDetails";
+import GuideProfile from "../Components/GuideProfile";
 
   const router = createBrowserRouter([
     {
@@ -55,6 +56,11 @@ import PackageDetails from "../pages/PackageDetails";
             element: <PackageDetails></PackageDetails>,
             loader: ({params})=>fetch(`http://localhost:5000/package/${params.id}`),
         },
+        {
+            path: '/guide/:email',
+            element: <GuideProfile></GuideProfile>,
+            loader: ({params})=>fetch(`http://localhost:5000/users/${params.email}`),
+        },
       ]
     },
     {
@@ -77,6 +83,7 @@ import PackageDetails from "../pages/PackageDetails";
           path:'/dashboard/request',
           element: <Request></Request>
         },
+        
       ]
     }
   ]);
