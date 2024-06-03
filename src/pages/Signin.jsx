@@ -18,6 +18,7 @@ const Signin = () => {
         .then((result) => {
             const email = result.user?.email
             const name = result.user?.displayName
+            const photo = result.user?.photoURL
 
 			Swal.fire({
 				title: 'Successful',
@@ -30,7 +31,7 @@ const Signin = () => {
                 headers: {
                     'content-type' : 'application/json'
                 },
-                body: JSON.stringify({email, name})
+                body: JSON.stringify({email, name, photo, role:'tourist', requested: 'Request'})
             })
             .then(res=> res.json())
             .then(data=>{

@@ -15,6 +15,7 @@ import MyProfile from "../pages/dashboard/MyProfile";
 import MyWishlist from "../pages/dashboard/MyWishlist";
 import MyBookings from "../pages/dashboard/MyBookings";
 import Request from "../pages/dashboard/Request";
+import PackageDetails from "../pages/PackageDetails";
 
   const router = createBrowserRouter([
     {
@@ -48,6 +49,11 @@ import Request from "../pages/dashboard/Request";
         {
             path: '/signup',
             element: <Signup></Signup>
+        },
+        {
+            path: '/package/:id',
+            element: <PackageDetails></PackageDetails>,
+            loader: ({params})=>fetch(`http://localhost:5000/package/${params.id}`),
         },
       ]
     },

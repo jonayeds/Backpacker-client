@@ -1,29 +1,75 @@
-import { BiHeart } from "react-icons/bi";
-import { HiHeart } from "react-icons/hi";
-import bandarban from "../assets/images/slide5.jpg";
-import cox from "../assets/images/slide3.jpg";
-import sundarban from '../assets/images/sundarban.jpg'
 
+import { HiHeart } from "react-icons/hi";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import useAuth from "../customHooks/useAuth";
+import Swal from "sweetalert2";
 
 const Packages = () => {
+  const {auth} = useAuth()
+  const user = auth.currentUser
+  const email = user?.email
+  const [packages, setPackages] = useState([])
+  useEffect(()=>{
+    fetch('http://localhost:5000/packages')
+    .then(res=> res.json())
+    .then(data =>{
+      console.log(data)
+      setPackages(data)
+      console.log(packages)
+    })
+  },[])
+  const handleWish  = (singlePackage)=>{
+    fetch(`http://localhost:5000/wishlist/${email}`)
+    .then(res=>res.json())
+    .then(data =>{
+      const filtered = data.filter(d=>d.id === singlePackage.id)
+      console.log(filtered)
+      if(filtered.length>0){
+        Swal.fire({
+          title: 'error',
+          text: 'Already added to wishlist',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        })
+      }else {
+        fetch(`http://localhost:5000/wishlist`, {
+        method: 'POST',
+        headers: {
+          'content-type' : 'application/json'
+        },
+        body: JSON.stringify({...singlePackage, email} )
+      }) 
+      .then(res=> res.json())
+      .then(data => {
+        Swal.fire({
+          title: 'Successful',
+          text: 'added to wishlist',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        })
+        console.log(data)
+      })
+      }
+    })
+  }
   return (
     <div>
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-y-8">
-        <div className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mx-auto">
+        {
+          packages.map((singlePackage)=> <div key={singlePackage.title} className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mx-auto">
           <div className="flex justify-between pb-4 border-bottom">
             <div className="flex items-center">
-              <a className="mb-0 capitalize dark:text-gray-800">Hiking</a>
+              <a className="mb-0 capitalize dark:text-gray-800">{singlePackage.tour_type}</a>
             </div>
-            <div className="text-3xl">
-              <HiHeart className="text-red-500" />
-              <BiHeart />
+            <div className="text-3xl cursor-pointer" onClick={()=>handleWish(singlePackage)}>
+                 <HiHeart className="text-red-500" /> 
             </div>
           </div>
           <div className="space-y-4">
             <div className="space-y-2">
               <img
-                src={bandarban}
+                src={singlePackage.images[4]}
                 alt=""
                 className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
               />
@@ -31,78 +77,17 @@ const Packages = () => {
             <div className="space-y-2">
               <a rel="noopener noreferrer" href="#" className="block">
                 <h3 className="text-xl font-semibold text-[#2e7b82]">
-                  Explore raw nature by hiking into the Bandarban Hills.
+                  {singlePackage.package_title}
                 </h3>
               </a>
-              <p>Price: BDT 5000</p>
-              <Link to={'/bandarban'} className="btn bg-[#cbb164] text-white hover:bg-[#a08942]">
+              <p>Price: ${singlePackage.price}</p>
+              <Link to={`/package/${singlePackage._id}`} className="btn bg-[#cbb164] text-white hover:bg-[#a08942]">
                 View Package
               </Link>
             </div>
           </div>
-        </div>
-        <div className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mx-auto">
-          <div className="flex justify-between pb-4 border-bottom">
-            <div className="flex items-center">
-              <a className="mb-0 capitalize dark:text-gray-800">Adventure sports</a>
-            </div>
-            <div className="text-3xl">
-              <HiHeart className="text-red-500" />
-              <BiHeart />
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <img
-                src={cox}
-                alt=""
-                className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-              />
-            </div>
-            <div className="space-y-2 ">
-              <a rel="noopener noreferrer" href="#" className="block">
-                <h3 className="text-xl font-semibold text-[#2e7b82]">
-                 Experience Adventure sports in Cox`s Bazar
-                </h3>
-              </a>
-              <p>Price: BDT 5000</p>
-              <Link to={'/coxbazar'} className="btn bg-[#cbb164] text-white hover:bg-[#a08942]">
-                View Package
-              </Link>
-            </div>
-          </div>
-        </div>
-        <div className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mx-auto">
-          <div className="flex justify-between pb-4 border-bottom">
-            <div className="flex items-center">
-              <a className="mb-0 capitalize dark:text-gray-800">Adventure sports</a>
-            </div>
-            <div className="text-3xl">
-              <HiHeart className="text-red-500" />
-              <BiHeart />
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="space-y-2">
-              <img
-                src={sundarban}
-                alt=""
-                className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-              />
-            </div>
-            <div className="space-y-2 ">
-              <a rel="noopener noreferrer" href="#" className="block">
-                <h3 className="text-xl font-semibold text-[#2e7b82]">
-                 Experience Adventure sports in Cox`s Bazar
-                </h3>
-              </a>
-              <p>Price: BDT 5000</p>
-              <Link to={'/sundarban'} className="btn bg-[#cbb164] text-white hover:bg-[#a08942]">
-                View Package
-              </Link>
-            </div>
-          </div>
-        </div>
+        </div>)
+        }
       </div>
 	<div className="flex justify-center mt-8">
 		<Link to={'/allPackages'} className="text-center px-6 mx-auto logo  text-3xl   hover:shadow-md duration-500 shadow-xl py-2 rounded-md bg-gray-100 text-[#CBB164]"> All Packages...</Link>

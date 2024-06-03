@@ -1,0 +1,66 @@
+[
+    {
+      "id" : 1,
+      "tour_type": "Adventure",
+      "price": 1200,
+      "images": [
+        "https://t4.ftcdn.net/jpg/05/29/77/09/360_F_529770900_z9ffeB7LQaZ4t2I18gqPqAEg9hAsgm6v.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZ_PR0Fbdrzmtm1w-hif_khW5xkL4KodNvRQ&s",
+        "https://images.travelandleisureasia.com/wp-content/uploads/sites/2/2024/01/16171823/spotted-deer.jpg",
+        "https://eoimages.gsfc.nasa.gov/images/imagerecords/7000/7028/sundarban_l7_2000331_lrg.jpg",
+        "https://www.travelchhutichhuti.com/blog/wp-content/uploads/2020/11/Sundarban-National-Park.jpg"
+      ],
+      "package_title": "Sundarbans Adventure Tour",
+      "tour_plan": [
+        "Day 1: Arrival in Khulna, boat journey to Sundarbans",
+        "Day 2: Jungle safari and wildlife spotting",
+        "Day 3: Visit to Kotka beach and Jamtola watchtower",
+        "Day 4: Canoe ride and bird watching",
+        "Day 5: Return to Khulna and departure"
+      ],
+      "about_tour": "Experience the thrill of exploring the world's largest mangrove forest, the Sundarbans. This 5-day adventure includes jungle safaris, wildlife spotting, and serene boat rides through the intricate waterways."
+    },
+    {
+      "id" : 2,
+      "tour_type": "Cultural",
+      "price": 1000,
+      "images": [
+        "https://cdn.britannica.com/52/148852-050-56A78A2A/National-Assembly-Building-Bangladesh-Dhaka-Louis-I.jpg",
+        "https://cdnuploads.aa.com.tr/uploads/Contents/2021/07/28/thumbs_b_c_d19f4978a940d67468978b86d128fa12.jpg?v=232002",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSApDo616sVLNO3Zg5Hrcn4W54NsDU8InIRIg&s",
+        "https://cdn.turkishairlines.com/m/7f1e4800fb2655f4/original/Travel-Guide-of-Dhaka-via-Turkish-Airlines.jpg",
+        "https://images.thesqua.re/blog/Lalbag-Fort-in-Dhaka-Bangladesh.jpg"
+      ],
+      "package_title": "Historic Dhaka City Tour",
+      "tour_plan": [
+        "Day 1: Arrival in Dhaka, visit Lalbagh Fort",
+        "Day 2: Tour of Ahsan Manzil and Sadarghat",
+        "Day 3: Visit to Dhakeshwari Temple and Armenian Church",
+        "Day 4: Explore Sonargaon and Panam City",
+        "Day 5: Shopping at New Market and departure"
+      ],
+      "about_tour": "Discover the rich cultural heritage of Dhaka, the capital city of Bangladesh. This 5-day tour includes visits to historic sites, architectural marvels, and bustling markets."
+    },
+    {
+      "id" : 3,
+      "tour_type": "Beach",
+      "price": 1500,
+      "images": [
+        "https://www.laurewanders.com/wp-content/uploads/2023/02/Backpacking-in-Bangladesh-00009.jpg",
+        "https://vromonguide.com/wp-content/uploads/Coxsbazar-Tour-Plan-770x420.jpg",
+        "https://www.tourismkeari.com/static/products/65e31bb9b11112.jpg",
+        "https://pix10.agoda.net/hotelImages/119/1196495/1196495_17122303270060592537.jpg?ca=6&ce=1&s=702x392",
+        "https://www.tbsnews.net/sites/default/files/styles/amp_metadata_content_image_min_696px_wide/public/images/2021/10/29/saint_martin_rashed_kabir.jpg"
+      ],
+      "package_title": "Cox's Bazar Beach Holiday",
+      "tour_plan": [
+        "Day 1: Arrival in Cox's Bazar, beach relaxation",
+        "Day 2: Visit to Inani Beach and Himchari National Park",
+        "Day 3: Island hopping to St. Martin's Island",
+        "Day 4: Explore local markets and Buddhist temples",
+        "Day 5: Water sports activities and departure"
+      ],
+      "about_tour": "Relax and unwind on the longest natural sea beach in the world, located in Cox's Bazar. This 5-day tour offers a perfect mix of beach relaxation, island adventures, and cultural exploration."
+    }
+  ]
+  
