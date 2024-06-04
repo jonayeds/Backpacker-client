@@ -47,7 +47,7 @@ const Nav = () => {
     {
         user? <div className="flex gap-8 ">
           <div className="dropdown">
-  <div tabIndex={0} role="button" className="w-12 h-12 bg-gray-200 rounded-full m-1"><img src= {user?.photoURL} className="w-full rounded-full border-green-400 border-2" alt="" /></div>
+  <div tabIndex={0} role="button" className="w-12 h-12 bg-gray-200 rounded-full m-1"><img src= {user?.photoURL} className="w-full h-full rounded-full border-green-400 border-2" alt="" /></div>
   <ul tabIndex={0} className="dropdown-content  z-[1] menu p-2 shadow bg-base-200 rounded-box w-max">
     <li className="font-semibold opacity-70">{user?.displayName}</li>
     <li className="font-semibold opacity-70 text-sm">{user?.email}</li>

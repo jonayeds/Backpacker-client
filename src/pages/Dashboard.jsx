@@ -3,6 +3,7 @@ import useAuth from "../customHooks/useAuth";
 import { BsHeartFill, BsPerson } from "react-icons/bs";
 import { NavLink, Outlet } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { IoMdAddCircle } from "react-icons/io";
 
 const Dashboard = () => {
   const { auth } = useAuth();
@@ -105,6 +106,33 @@ const Dashboard = () => {
                >
                  <BiBook className="text-xl" />
                  <span>My Assigned Tours</span>
+               </NavLink>
+             </li>
+             
+           </ul>
+           }
+
+{
+             (role === 'admin') &&  <ul className="pt-2 pb-4 space-y-1 text-sm">
+             <li>
+               <NavLink to={'/'} className={({isActive})=> isActive? 'text-[#23575C] duration-200 font-semibold flex items-center p-2 space-x-3 rounded-md': 'flex items-center p-2 space-x-3 rounded-md'}
+               >
+                 <BiBook className="text-xl" />
+                 <span>Home</span>
+               </NavLink>
+             </li>
+             <li>
+               <NavLink to={'/dashboard/addPackage'} className={({isActive})=> isActive? 'text-[#23575C] duration-200 font-semibold flex items-center p-2 space-x-3 rounded-md': 'flex items-center p-2 space-x-3 rounded-md'}
+               >
+                <IoMdAddCircle  className="text-xl" />
+                 <span>Add Packages</span>
+               </NavLink>
+             </li>
+             <li>
+               <NavLink to={'/dashboard/manageUsers'} className={({isActive})=> isActive? 'text-[#23575C] duration-200 font-semibold flex items-center p-2 space-x-3 rounded-md': 'flex items-center p-2 space-x-3 rounded-md'}
+               >
+                 <BsPerson className="text-xl" />
+                 <span>Manage Users</span>
                </NavLink>
              </li>
              

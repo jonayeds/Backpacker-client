@@ -20,7 +20,7 @@ const MyProfile = () => {
 	const experience = form.experience.value
 	const education = form.education.value
 	console.log({phone, experience, education})
-	fetch(`http://localhost:5000/users/update/${user?.email}`, {
+	fetch(`http://localhost:5000/users/guide/update/${user?.email}`, {
 		method: 'PUT',
 		headers: {
 			'content-type' : 'application/json'

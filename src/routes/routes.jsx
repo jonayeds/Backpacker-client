@@ -18,6 +18,8 @@ import Request from "../pages/dashboard/Request";
 import PackageDetails from "../pages/PackageDetails";
 import GuideProfile from "../Components/GuideProfile";
 import AssignedTours from "../pages/dashboard/AssignedTours";
+import ManageUsers from "../pages/dashboard/ManageUsers";
+import AddPackage from "../pages/dashboard/AddPackage";
 
   const router = createBrowserRouter([
     {
@@ -87,6 +89,14 @@ import AssignedTours from "../pages/dashboard/AssignedTours";
         {
           path:'/dashboard/assignedTours',
           element: <AssignedTours></AssignedTours>
+        },
+        {
+          path:'/dashboard/manageUsers',
+          element: <ManageUsers></ManageUsers>
+        },
+        {
+          path:'/dashboard/addPackage',
+          element: <AddPackage></AddPackage>
         },
         
       ]
