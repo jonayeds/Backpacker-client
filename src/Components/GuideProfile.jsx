@@ -36,6 +36,61 @@ const GuideProfile = () => {
 		</div>
 	</div>
 </div>
+
+<div className="">
+        <h1 className="mt-16 text-center text-[#CAB064] mb-6 text-4xl logo ">
+          Guide Information
+        </h1>
+        <form
+          
+          className="space-y-8 p-12  border-[1px] border-opacity-30 rounded-3xl mt-10  border-gray-500 w-full  mx-auto "
+        >
+          <div className="space-y-4">
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm">
+                Phone Number
+              </label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Your Name"
+                className="w-full px-3 py-3  rounded-md text-gray-500  border outline-none"
+                defaultValue={guide.phone || 'Not Given'}
+                readOnly
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm">
+                Experience
+              </label>
+              <input
+                type="text"
+                name="email"
+                id="email"
+                placeholder="Your Email"
+                className="w-full px-3 py-3  rounded-md  border outline-none"
+                defaultValue={guide.experience || 'Not Given'}
+                readOnly
+              />
+            </div>
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm">
+                Education
+              </label>
+              <input
+                type="text"
+                name="photo"
+                
+                placeholder="Photo URL"
+                className="w-full px-3 py-3  rounded-md  border outline-none"
+                defaultValue={guide.education || 'Not Given'}
+                readOnly
+              />
+            </div>
+          </div>
+        </form>
+</div>
         </div>
     );
 };

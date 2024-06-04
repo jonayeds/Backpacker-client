@@ -17,6 +17,7 @@ import MyBookings from "../pages/dashboard/MyBookings";
 import Request from "../pages/dashboard/Request";
 import PackageDetails from "../pages/PackageDetails";
 import GuideProfile from "../Components/GuideProfile";
+import AssignedTours from "../pages/dashboard/AssignedTours";
 
   const router = createBrowserRouter([
     {
@@ -82,6 +83,10 @@ import GuideProfile from "../Components/GuideProfile";
         {
           path:'/dashboard/request',
           element: <Request></Request>
+        },
+        {
+          path:'/dashboard/assignedTours',
+          element: <AssignedTours></AssignedTours>
         },
         
       ]

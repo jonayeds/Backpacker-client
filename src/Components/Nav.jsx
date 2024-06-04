@@ -12,6 +12,7 @@ const Nav = () => {
           navigate('/')
         })
       }
+      console.log(user)
     const navigation = <>
     <NavLink to={'/'} className={({isActive})=> isActive? 'text-[#347d87] hover:scale-110 duration-200 font-semibold': 'hover:scale-110 duration-200'}><li><a>Home</a></li></NavLink>
     <NavLink to={'/community'}  className={({isActive})=> isActive? 'text-[#347d87] hover:scale-110 duration-200 font-semibold': 'hover:scale-110 duration-200'}><li><a>Community</a></li></NavLink>
@@ -46,10 +47,10 @@ const Nav = () => {
     {
         user? <div className="flex gap-8 ">
           <div className="dropdown">
-  <div tabIndex={0} role="button" className="w-12 h-12 bg-gray-200 rounded-full m-1"><img src={user?.photoURL} className="w-full rounded-full border-green-400 border-2" alt="" /></div>
+  <div tabIndex={0} role="button" className="w-12 h-12 bg-gray-200 rounded-full m-1"><img src= {user?.photoURL} className="w-full rounded-full border-green-400 border-2" alt="" /></div>
   <ul tabIndex={0} className="dropdown-content  z-[1] menu p-2 shadow bg-base-200 rounded-box w-max">
-    <li className="font-semibold opacity-70">{user.displayName}</li>
-    <li className="font-semibold opacity-70 text-sm">{user.email}</li>
+    <li className="font-semibold opacity-70">{user?.displayName}</li>
+    <li className="font-semibold opacity-70 text-sm">{user?.email}</li>
     <NavLink to={'/dashboard'} className={'text-[#5a9097] font-semibold'}><li><a>Dashboard</a></li></NavLink>
     <li><a>Offer Announcements</a></li>
   </ul>

@@ -1,40 +1,78 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import useAuth from "../customHooks/useAuth";
 import DatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css'
+import "react-datepicker/dist/react-datepicker.css";
+import Swal from "sweetalert2";
 const PackageDetails = () => {
-  const navigate = useNavigate()
-    const [startDate, setStartDate] = useState(new Date());
-    const {auth} = useAuth()
-    const user = auth.currentUser
+  const navigate = useNavigate();
+  const [startDate, setStartDate] = useState(new Date());
+  const { auth } = useAuth();
+  const user = auth.currentUser;
   const [see, setSee] = useState(false);
   const tour = useLoaderData();
-  console.log(tour);
-  const handleBooking = e=>{
-    e.preventDefault()
-    if(!user){
-      navigate('/login')
-    }else{
-      const form = e.target
-      const name  = form.name.value
-      const email  = form.email.value
-      const photo  = user?.photoURL
-      const date  = form.date.value
-      const price  = form.price.value
-      const booking  ={name, email, photo, date, price} 
-      fetch('http://localhost:5000/bookings',{
-        method: 'POST',
-        headers:{
-          'content-type' : 'application/json'
-        },
-        body: JSON.stringify(booking)
-      }).then(res=>res.json())
-      .then(data=>{
-        console.log(data)
-      })
-    }
-  }
+  const [guides, setGuides] = useState([])
+  const [bookings, setBookings]  = useState([])
+  useEffect(() => {
+    fetch("http://localhost:5000/guide")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setGuides(data)
+      });
+  }, []);
+  // useEffect(()=>{
+
+  // },[user])
+  const handleBooking = (e) => {
+    e.preventDefault();
+    fetch(`http://localhost:5000/bookings/${user?.email}`)
+    .then(res=> res.json())
+    .then(data=>{
+      // console.log('all bookings',data)
+      setBookings(data)
+      if (!user) {
+        navigate("/login");
+      } else {
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const photo = user?.photoURL;
+        const date = form.date.value;
+        const price = form.price.value;
+        const guide = form.guide.value;
+        const booking = { name, email, photo, date, price, guide, tour:tour.package_title, status : 'pending' };
+        console.log('all booking',bookings)
+        fetch("http://localhost:5000/bookings", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(booking),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if(data.acknowledged ){
+              Swal.fire({
+                title: 'success',
+                text: 'Booked this package',
+                icon: 'success',
+                confirmButtonText: 'OK'
+              })
+            } else{
+              Swal.fire({
+                title: 'error',
+                text: 'Already booked a package on this day ',
+                icon: 'error',
+                confirmButtonText: 'OK'
+              })
+            }
+          });
+       
+      }
+    })
+  };
   return (
     <div>
       <div>
@@ -135,18 +173,36 @@ const PackageDetails = () => {
               <input
                 type="text"
                 name="photo"
-                
                 placeholder="Photo URL"
                 className="w-full px-3 py-3  rounded-md  border outline-none"
                 defaultValue={user?.photoURL}
                 readOnly
               />
             </div>
-            <div>
-            <label htmlFor="email" className="block text-sm">
+            <div className="space-y-2">
+              <label htmlFor="email" className="block text-sm">
                 Date
               </label>
-            <DatePicker name="date" className="w-full  px-3 py-3  rounded-md  border outline-none" selected={startDate} onChange={(date) => setStartDate(date)}/> 
+              <DatePicker
+                name="date"
+                className="w-full  px-3 py-3  rounded-md  border outline-none"
+                selected={startDate}
+                onChange={(date) => setStartDate(date)}
+              />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm">Choose Tour Guide</label>
+              <select
+                name="guide"
+                id="cars"
+                className="w-full px-3 py-3  rounded-md  border outline-none"
+              >
+                {
+                  guides.map(guide=> <option key={guide._id} value={guide.email}>{guide.name}</option>)
+                }
+                
+                
+              </select>
             </div>
             <div className="space-y-2">
               <label htmlFor="email" className="block text-sm">
@@ -162,7 +218,6 @@ const PackageDetails = () => {
                 readOnly
               />
             </div>
-           
           </div>
           <button
             type="submit"
