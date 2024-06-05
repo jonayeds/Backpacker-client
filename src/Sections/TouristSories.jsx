@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const TouristSories = () => {
     const [stories, setStories] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/stories' )
+        fetch('https://backpacker-server.vercel.app/stories' )
         .then(res=> res.json())
         .then(data =>{
             console.log(data)

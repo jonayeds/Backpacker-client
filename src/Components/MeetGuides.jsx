@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const MeetGuides = () => {
     const [guides, setGuides] = useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/guide')
+        fetch('https://backpacker-server.vercel.app/guide')
        .then(res=> res.json())
        .then(data=>{
         setGuides(data)

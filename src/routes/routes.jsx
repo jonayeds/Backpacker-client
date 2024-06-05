@@ -60,27 +60,27 @@ import AllStories from "../pages/AllStories";
         {
             path: '/package/:id',
             element: <PackageDetails></PackageDetails>,
-            loader: ({params})=>fetch(`http://localhost:5000/package/${params.id}`),
+            loader: ({params})=>fetch(`https://backpacker-server.vercel.app/package/${params.id}`),
         },
         {
             path: '/guide/:email',
             element: <GuideProfile></GuideProfile>,
-            loader: ({params})=>fetch(`http://localhost:5000/users/${params.email}`),
+            loader: ({params})=>fetch(`https://backpacker-server.vercel.app/users/${params.email}`),
         },
         {
             path: '/tours/:type',
             element: <TypedPackage></TypedPackage>,
-            loader: ({params})=>fetch(`http://localhost:5000/tours/${params.type}`),
+            loader: ({params})=>fetch(`https://backpacker-server.vercel.app/tours/${params.type}`),
         },
         {
             path: '/story/:id',
             element: <StoryDetail></StoryDetail>,
-            loader: ({params})=>fetch(`http://localhost:5000/story/${params.id}`),
+            loader: ({params})=>fetch(`https://backpacker-server.vercel.app/story/${params.id}`),
         },
         {
             path: '/allStories',
             element: <AllStories></AllStories> ,
-            loader: ()=>fetch(`http://localhost:5000/stories`),
+            loader: ()=>fetch(`https://backpacker-server.vercel.app/stories`),
         },
       ]
     },

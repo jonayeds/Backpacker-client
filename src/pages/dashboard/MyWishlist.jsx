@@ -9,7 +9,7 @@ const MyWishlist = () => {
     const {auth}  = useAuth()
     const {email} = auth.currentUser
     useEffect(()=>{
-        fetch(`http://localhost:5000/wishlist/${email}`)
+        fetch(`https://backpacker-server.vercel.app/wishlist/${email}`)
         .then(res=> res.json())
         .then(data =>{
             setWish(data)
@@ -27,7 +27,7 @@ const MyWishlist = () => {
         })
 		.then(result=>{
 			if(result.isConfirmed){
-				fetch(`http://localhost:5000/wishlist/${id}`, {
+				fetch(`https://backpacker-server.vercel.app/wishlist/${id}`, {
 					method: 'DELETE'
 				}).then(res=>res.json())
 				.then(data=>{

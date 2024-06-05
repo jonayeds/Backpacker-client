@@ -7,7 +7,7 @@ const MyProfile = () => {
   const user = auth.currentUser;
   const [role, setRole] = useState("");
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://backpacker-server.vercel.app/users/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -21,7 +21,7 @@ const MyProfile = () => {
 	const experience = form.experience.value
 	const education = form.education.value
 	console.log({phone, experience, education})
-	fetch(`http://localhost:5000/users/guide/update/${user?.email}`, {
+	fetch(`https://backpacker-server.vercel.app/users/guide/update/${user?.email}`, {
 		method: 'PUT',
 		headers: {
 			'content-type' : 'application/json'
@@ -39,7 +39,7 @@ const MyProfile = () => {
     const story = e.target.story.value
     const userStory = {story, user }
     console.log(userStory)
-    fetch('http://localhost:5000/stories', {
+    fetch('https://backpacker-server.vercel.app/stories', {
       method : 'POST',
       headers: {
         'content-type' : 'application/json'

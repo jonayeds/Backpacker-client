@@ -10,7 +10,7 @@ const Dashboard = () => {
   const user = auth.currentUser;
   const [role,  setRole] = useState('')
   useEffect(()=>{
-    fetch(`http://localhost:5000/users/${user?.email}`)
+    fetch(`https://backpacker-server.vercel.app/users/${user?.email}`)
     .then(res=> res.json())
     .then(data=>{
         console.log(data)

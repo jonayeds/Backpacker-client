@@ -7,7 +7,7 @@ const ManageUsers = () => {
     const admin = auth.currentUser
     const [notFiltered, setNotFiltered] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/users`)
+        fetch(`https://backpacker-server.vercel.app/users`)
         .then(res=> res.json())
         .then(data => {
             setAllUsers(data.filter(user=> user.email !== admin.email))
@@ -16,7 +16,7 @@ const ManageUsers = () => {
     },[admin])
     console.log(allUsers)
     const handleMakeAdmin = id =>{
-        fetch(`http://localhost:5000/users/updateRole/${id}`, {
+        fetch(`https://backpacker-server.vercel.app/users/updateRole/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'
@@ -35,7 +35,7 @@ const ManageUsers = () => {
         })
     }
     const handleMakeGuide = id =>{
-        fetch(`http://localhost:5000/users/updateRole/${id}`, {
+        fetch(`https://backpacker-server.vercel.app/users/updateRole/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type' : 'application/json'

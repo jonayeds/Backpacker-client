@@ -11,7 +11,7 @@ const Packages = () => {
   const email = user?.email
   const [packages, setPackages] = useState([])
   useEffect(()=>{
-    fetch('http://localhost:5000/packages')
+    fetch('https://backpacker-server.vercel.app/packages')
     .then(res=> res.json())
     .then(data =>{
       console.log(data)
@@ -20,7 +20,7 @@ const Packages = () => {
     })
   },[])
   const handleWish  = (singlePackage)=>{
-    fetch(`http://localhost:5000/wishlist/${email}`)
+    fetch(`https://backpacker-server.vercel.app/wishlist/${email}`)
     .then(res=>res.json())
     .then(data =>{
       const filtered = data.filter(d=>d.id === singlePackage.id)
@@ -33,7 +33,7 @@ const Packages = () => {
           confirmButtonText: 'OK'
         })
       }else {
-        fetch(`http://localhost:5000/wishlist`, {
+        fetch(`https://backpacker-server.vercel.app/wishlist`, {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'

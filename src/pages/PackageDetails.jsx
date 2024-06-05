@@ -15,7 +15,7 @@ const PackageDetails = () => {
   const [guides, setGuides] = useState([])
   const [bookings, setBookings]  = useState([])
   useEffect(() => {
-    fetch("http://localhost:5000/guide")
+    fetch("https://backpacker-server.vercel.app/guide")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -24,7 +24,7 @@ const PackageDetails = () => {
   }, []);
   const handleBooking = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:5000/bookings/${user?.email}`)
+    fetch(`https://backpacker-server.vercel.app/bookings/${user?.email}`)
     .then(res=> res.json())
     .then(data=>{
       // console.log('all bookings',data)
@@ -41,7 +41,7 @@ const PackageDetails = () => {
         const guide = form.guide.value;
         const booking = { name, email, photo, date, price, guide, tour:tour.package_title, status : 'pending' };
         console.log('all booking',bookings)
-        fetch("http://localhost:5000/bookings", {
+        fetch("https://backpacker-server.vercel.app/bookings", {
           method: "POST",
           headers: {
             "content-type": "application/json",

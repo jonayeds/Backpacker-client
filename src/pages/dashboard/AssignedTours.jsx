@@ -6,7 +6,7 @@ const AssignedTours = () => {
     const guide = auth.currentUser
     const [tours, setTours] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/bookings/assigned/${guide.email}`)
+        fetch(`https://backpacker-server.vercel.app/bookings/assigned/${guide.email}`)
         .then(res=> res.json())
         .then(data => {
             // console.log(data)
@@ -15,7 +15,7 @@ const AssignedTours = () => {
     },[guide])
 	// console.log('tours', tours)
 	const handleAccept = id =>{
-		fetch(`http://localhost:5000/bookings/${id}`, {
+		fetch(`https://backpacker-server.vercel.app/bookings/${id}`, {
 			method: 'PUT',
 			headers:{
 				'content-type'  : 'application/json'
@@ -31,7 +31,7 @@ const AssignedTours = () => {
 		})
 	}
 	const handleReject = id =>{
-		fetch(`http://localhost:5000/bookings/${id}`, {
+		fetch(`https://backpacker-server.vercel.app/bookings/${id}`, {
 			method: 'PUT',
 			headers:{
 				'content-type'  : 'application/json'

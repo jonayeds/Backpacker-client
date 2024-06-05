@@ -25,7 +25,7 @@ const AddPackage = () => {
         const images = [form.imagea.value,  form.imageb.value, form.imagec.value, form.imaged.value, form.imagee.value]
         const tour_plan  = [form.daya.value,  form.dayb.value, form.dayc.value, form.dayd.value, form.daye.value]
         const tour = {package_title,about_tour,images,price, tour_plan, tour_type}
-        fetch('http://localhost:5000/packages', {
+        fetch('https://backpacker-server.vercel.app/packages', {
             method:  'POST',
             headers:  {
                 'content-type' : 'application/json'

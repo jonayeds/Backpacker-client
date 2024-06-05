@@ -7,7 +7,7 @@ const Request = () => {
     const  [user,  setUser] = useState({})
     const [state,  setState] = useState('')
     useEffect(()=>{
-        fetch(`http://localhost:5000/users/${auth?.currentUser?.email}`)
+        fetch(`https://backpacker-server.vercel.app/users/${auth?.currentUser?.email}`)
         .then(res=> res.json())
         .then(data=>{
             console.log(data)
@@ -27,7 +27,7 @@ const Request = () => {
 			})
         }else{
             setState('Requested')
-            fetch(`http://localhost:5000/users/${auth?.currentUser?.email}`, {
+            fetch(`https://backpacker-server.vercel.app/users/${auth?.currentUser?.email}`, {
                 method: 'PUT',
                 headers:  {
                     'content-type' : 'application/json'

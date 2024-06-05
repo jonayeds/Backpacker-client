@@ -6,7 +6,7 @@ const MyBookings = () => {
     const tourist = auth.currentUser
     const [tours, setTours] = useState([])
     useEffect(()=>{
-        fetch(`http://localhost:5000/bookings/myBookings/${tourist.email}`)
+        fetch(`https://backpacker-server.vercel.app/bookings/myBookings/${tourist.email}`)
         .then(res=> res.json())
         .then(data => {
 			setTours(data)
@@ -14,7 +14,7 @@ const MyBookings = () => {
     },[tourist])
     // console.log(tours)
     const handleCancel = id =>{
-        fetch(`http://localhost:5000/bookings/${id}`, {
+        fetch(`https://backpacker-server.vercel.app/bookings/${id}`, {
             method:'DELETE'
         }).then(res=>res.json())
         .then(data =>{
