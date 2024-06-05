@@ -20,20 +20,20 @@ const Dashboard = () => {
   },[user])
   console.log(role)
   return (
-    <div className="flex  flex-col lg:flex-row">
-      <div>
-      <div className="drawer lg:drawer-open z-50">
+    <div className="flex  flex-col lg:flex-row ">
+      <div className="">
+      <div className="drawer  lg:drawer-open z-50">
   <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
   <div className="drawer-content flex flex-col  ">
     {/* Page content here */}
-    <label htmlFor="my-drawer-2" className="text-3xl drawer-button lg:hidden mt-6 ml-6 "><BiMenu/></label>
+    <label htmlFor="my-drawer-2" className="text-3xl drawer-button lg:hidden mt-6 ml-6 w-max cursor-pointer"><BiMenu/></label>
   
   </div> 
-  <div className="drawer-side">
+  <div className="drawer-side ">
     <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
-    <ul className="menu w-80 min-h-full bg-base-200 text-base-content p-0 ">
+    <ul className="menu w-80 min-h-full   bg-base-200 text-base-content p-0 ">
       {/* Sidebar content here */}
-      <div className="h-full p-3 space-y-2 rou  bg-[#CCD6D5] min-h-screen w-full">
+      <div className="h-full p-3 space-y-2   bg-[#CCD6D5] min-h-screen w-full">
           <div className="flex items-center p-2 space-x-4">
             <img
               src={user.photoURL}

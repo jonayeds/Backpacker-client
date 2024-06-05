@@ -20,6 +20,7 @@ import GuideProfile from "../Components/GuideProfile";
 import AssignedTours from "../pages/dashboard/AssignedTours";
 import ManageUsers from "../pages/dashboard/ManageUsers";
 import AddPackage from "../pages/dashboard/AddPackage";
+import TypedPackage from "../pages/TypedPackage";
 
   const router = createBrowserRouter([
     {
@@ -63,6 +64,11 @@ import AddPackage from "../pages/dashboard/AddPackage";
             path: '/guide/:email',
             element: <GuideProfile></GuideProfile>,
             loader: ({params})=>fetch(`http://localhost:5000/users/${params.email}`),
+        },
+        {
+            path: '/tours/:type',
+            element: <TypedPackage></TypedPackage>,
+            loader: ({params})=>fetch(`http://localhost:5000/tours/${params.type}`),
         },
       ]
     },

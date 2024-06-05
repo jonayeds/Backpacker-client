@@ -11,6 +11,7 @@ const PackageDetails = () => {
   const user = auth.currentUser;
   const [see, setSee] = useState(false);
   const tour = useLoaderData();
+  console.log('tour',tour)
   const [guides, setGuides] = useState([])
   const [bookings, setBookings]  = useState([])
   useEffect(() => {
@@ -21,9 +22,6 @@ const PackageDetails = () => {
         setGuides(data)
       });
   }, []);
-  // useEffect(()=>{
-
-  // },[user])
   const handleBooking = (e) => {
     e.preventDefault();
     fetch(`http://localhost:5000/bookings/${user?.email}`)
@@ -123,9 +121,9 @@ const PackageDetails = () => {
         {tour.tour_plan.map((t) => (
           <div key={t} className="mt-12 space-y-4">
             <h1 className="text-center text-[#23575C] text-3xl logo">
-              {t.slice(0, 5)}
+              day {tour.tour_plan.indexOf(t) +1}
             </h1>
-            <p className="text-center">{t.slice(6, t.length)}</p>
+            <p className="text-center">{t}</p>
           </div>
         ))}
       </div>
