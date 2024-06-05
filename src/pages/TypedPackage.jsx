@@ -46,7 +46,7 @@ const TypedPackage = () => {
             Swal.fire({
               title: 'Successful',
               text: 'added to wishlist',
-              icon: 'success',
+              icon: 'success', 
               confirmButtonText: 'OK'
             })
             console.log(data)
