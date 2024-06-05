@@ -23,6 +23,7 @@ import AddPackage from "../pages/dashboard/AddPackage";
 import TypedPackage from "../pages/TypedPackage";
 import StoryDetail from "../pages/StoryDetail";
 import AllStories from "../pages/AllStories";
+import AllPackages from "../pages/AllPackages";
 
   const router = createBrowserRouter([
     {
@@ -81,6 +82,11 @@ import AllStories from "../pages/AllStories";
             path: '/allStories',
             element: <AllStories></AllStories> ,
             loader: ()=>fetch(`https://backpacker-server.vercel.app/stories`),
+        },
+        {
+            path: '/allPackages',
+            element: <AllPackages></AllPackages> ,
+            loader: ()=>fetch(`https://backpacker-server.vercel.app/packages`),
         },
       ]
     },

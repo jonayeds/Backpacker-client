@@ -1,24 +1,15 @@
-
 import { HiHeart } from "react-icons/hi";
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import useAuth from "../customHooks/useAuth";
+import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAuth from "../customHooks/useAuth";
 
-const Packages = () => {
-  const {auth} = useAuth()
+const AllPackages = () => {
+    const allPackages = useLoaderData()
+    const {auth} = useAuth()
   const user = auth.currentUser
   const email = user?.email
-  const [packages, setPackages] = useState([])
-  useEffect(()=>{
-    fetch('https://backpacker-server.vercel.app/packages')
-    .then(res=> res.json())
-    .then(data =>{
-      console.log(data)
-      setPackages(data)
-      console.log(packages)
-    })
-  },[])
+
+  
   const handleWish  = (singlePackage)=>{
     fetch(`https://backpacker-server.vercel.app/wishlist/${email}`)
     .then(res=>res.json())
@@ -53,11 +44,11 @@ const Packages = () => {
       }
     })
   }
-  return (
-    <div>
-      <div className="grid lg:grid-cols-2 grid-cols-1 gap-y-8">
+    return (
+        <div>
+            <div className="grid lg:grid-cols-2 grid-cols-1 gap-y-8">
         {
-          packages.slice(0,4).map((singlePackage)=> <div key={singlePackage.title} className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mx-auto">
+          allPackages.map((singlePackage)=> <div key={singlePackage.title} className="max-w-lg p-4 shadow-md dark:bg-gray-50 dark:text-gray-800 mx-auto">
           <div className="flex justify-between pb-4 border-bottom">
             <div className="flex items-center">
               <a className="mb-0 capitalize dark:text-gray-800">{singlePackage.tour_type}</a>
@@ -89,11 +80,8 @@ const Packages = () => {
         </div>)
         }
       </div>
-	<div className="flex justify-center mt-8">
-		<Link to={'/allPackages'} className="text-center px-6 mx-auto logo  text-3xl   hover:shadow-md duration-500 shadow-xl py-2 rounded-md bg-gray-100 text-[#CBB164]"> All Packages...</Link>
-	</div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default Packages;
+export default AllPackages;
