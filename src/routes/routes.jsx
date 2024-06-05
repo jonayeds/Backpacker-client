@@ -21,6 +21,8 @@ import AssignedTours from "../pages/dashboard/AssignedTours";
 import ManageUsers from "../pages/dashboard/ManageUsers";
 import AddPackage from "../pages/dashboard/AddPackage";
 import TypedPackage from "../pages/TypedPackage";
+import StoryDetail from "../pages/StoryDetail";
+import AllStories from "../pages/AllStories";
 
   const router = createBrowserRouter([
     {
@@ -69,6 +71,16 @@ import TypedPackage from "../pages/TypedPackage";
             path: '/tours/:type',
             element: <TypedPackage></TypedPackage>,
             loader: ({params})=>fetch(`http://localhost:5000/tours/${params.type}`),
+        },
+        {
+            path: '/story/:id',
+            element: <StoryDetail></StoryDetail>,
+            loader: ({params})=>fetch(`http://localhost:5000/story/${params.id}`),
+        },
+        {
+            path: '/allStories',
+            element: <AllStories></AllStories> ,
+            loader: ()=>fetch(`http://localhost:5000/stories`),
         },
       ]
     },

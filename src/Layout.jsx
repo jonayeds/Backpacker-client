@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Nav from "./Components/Nav";
+import Footer from "./Sections/Footer";
 
 
 const Layout = () => {
@@ -10,10 +11,11 @@ const Layout = () => {
             <Nav></Nav>
             </div>
            </div>
-           <div className="container mx-auto">  
+           <div className="container mx-auto min-h-screen">  
            
            <Outlet></Outlet>
            </div>
+           <Footer></Footer>
         </div>
     );
 };

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../customHooks/useAuth";
+import Swal from "sweetalert2";
 
 const MyProfile = () => {
   const { auth } = useAuth();
@@ -33,11 +34,34 @@ const MyProfile = () => {
 	})
 
   }
+  const handleAddStory = e =>{
+    e.preventDefault()
+    const story = e.target.story.value
+    const userStory = {story, user }
+    console.log(userStory)
+    fetch('http://localhost:5000/stories', {
+      method : 'POST',
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body:JSON.stringify(userStory)
+    }).then(res=> res.json())
+    .then(data=>{
+      console.log(data)
+      Swal.fire({
+				title: 'Successful',
+				text: 'Story added Successfully',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+      e.target.reset()
+    })
+  }
   return (
     <div className="mt-12 w-full flex items-center flex-col">
       <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-50 dark:text-gray-800">
         <img
-          src={user.photoURL}
+          src={user?.photoURL}
           alt=""
           className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square"
         />
@@ -115,14 +139,14 @@ const MyProfile = () => {
           <h1 className="mt-12 mb-6 text-4xl logo text-center text-[#23575C] font-bold">
             Add Your Story
           </h1>
-          <form action="" className="">
+          <form onSubmit={handleAddStory} action="" className="">
             <textarea
-              name=""
+              name="story"
               id=""
               placeholder="Write Your Story Here"
               className="p-4 h-52 w-96 rounded-xl bg-gray-100 focus:outline-none border-2 border-[#23575C] border-opacity-10 text-[#23575C] text-opacity-80"
             ></textarea>
-            <button className="block mx-auto mt-2  px-4 py-2 bg-gray-100 duration-500 shadow-xl hover:shadow-md text-[#23575C] font-bold text-opacity-70 mb-10">
+            <button type="submit"  className="block mx-auto mt-2  px-4 py-2 bg-gray-100 duration-500 shadow-xl hover:shadow-md text-[#23575C] font-bold text-opacity-70 mb-10">
               Submit
             </button>
           </form>

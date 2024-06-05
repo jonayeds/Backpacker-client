@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { GiConsoleController } from "react-icons/gi";
+import Swal from "sweetalert2";
 
 const AddPackage = () => {
     const [images, setImages] =  useState(['a','b','c','d','e'])
@@ -34,7 +35,13 @@ const AddPackage = () => {
         .then(res=> res.json())
         .then(data=>{
             console.log(data)
-
+            Swal.fire({
+				title: 'Successful',
+				text: 'Package added Successfully',
+				icon: 'success',
+				confirmButtonText: 'OK'
+			})
+      e.target.reset()
         })
         
     }
