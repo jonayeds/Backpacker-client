@@ -16,7 +16,7 @@ const TouristSories = () => {
     return (
         <div className="mt-32">
             <h1 className="text-center text-5xl logo font-semibold mb-6 text-[#24565C]">Tourist Stories</h1>
-            <div className="py-24 font-semibold text-[#23575C] flex justify-center md:gap-12 gap-4">
+            <div className="py-24 font-semibold text-[#23575C] grid md:grid-cols-2 grid-cols-1 justify-center md:gap-12 gap-4">
                 {
                     stories.slice(0, 4).map(story=> <div key={story._id}>
                         <div className="dark:bg-gray-100 shadow-xl hover:shadow-md duration-500 dark:text-gray-800">
