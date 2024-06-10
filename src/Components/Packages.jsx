@@ -16,7 +16,6 @@ const Packages = () => {
     .then(data =>{
       console.log(data)
       setPackages(data)
-      console.log(packages)
     })
   },[])
   const handleWish  = (singlePackage)=>{
