@@ -1,8 +1,25 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# BackPackers.
+## Admin Username and Password
+- userEmail : 01juunaayeed@gmail.com 
+- Password : 123456  
 
-Currently, two official plugins are available:
+## Live site URL
+https://backpackers-2464a.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+
+## Key features and characteristics
+
+- It is a single page application.
+- Login and signup features.
+- Only Admin can add Packages.
+- Users can add Packages to Wishlist and remove packages from wishlist.
+- Tourists can request to Admin to become a Guide. 
+- Guide can see their Assigned tours and Accept or Reject them.
+- Admin can manage users by giving users roles.
+- Tourists can cancel their Booking if the booking is pending. 
+- tourists can share their travel stories. 
+- Full responsive on mobile, tablet and desktop. 
+
+
