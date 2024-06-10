@@ -126,4 +126,4 @@ import AllPackages from "../pages/AllPackages";
       ]
     }
   ]);
-  export default router
+  export default router 

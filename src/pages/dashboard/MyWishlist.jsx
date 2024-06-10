@@ -12,6 +12,7 @@ const MyWishlist = () => {
         fetch(`https://backpacker-server.vercel.app/wishlist/${email}`)
         .then(res=> res.json())
         .then(data =>{
+			console.log('wishes', data)
             setWish(data)
         })
     },[email])
@@ -27,7 +28,7 @@ const MyWishlist = () => {
         })
 		.then(result=>{
 			if(result.isConfirmed){
-				fetch(`https://backpacker-server.vercel.app/wishlist/${id}`, {
+				fetch(`http://localhost:5000/wishlist/${id}`, {
 					method: 'DELETE'
 				}).then(res=>res.json())
 				.then(data=>{
