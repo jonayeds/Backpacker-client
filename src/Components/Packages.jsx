@@ -23,7 +23,7 @@ const Packages = () => {
     fetch(`https://backpacker-server.vercel.app/wishlist/${email}`)
     .then(res=>res.json())
     .then(data =>{
-      const filtered = data.filter(d=>d.id === singlePackage.id)
+      const filtered = data.filter(d=>d._id === singlePackage._id)
       console.log(filtered)
       if(filtered.length>0){
         Swal.fire({
@@ -33,12 +33,19 @@ const Packages = () => {
           confirmButtonText: 'OK'
         })
       }else {
+        const tour_type = singlePackage.tour_type
+        const price = singlePackage.price
+        const images = singlePackage.images
+        const tour_plan = singlePackage.tour_plan
+        const about_tour = singlePackage.about_tour
+        const package_title = singlePackage.package_title
+        const newWish = {tour_type, price, images, tour_plan, about_tour, package_title, email}
         fetch(`https://backpacker-server.vercel.app/wishlist`, {
         method: 'POST',
         headers: {
           'content-type' : 'application/json'
         },
-        body: JSON.stringify({...singlePackage, email} )
+        body: JSON.stringify(newWish )
       }) 
       .then(res=> res.json())
       .then(data => {
