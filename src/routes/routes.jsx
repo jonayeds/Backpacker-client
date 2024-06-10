@@ -24,15 +24,17 @@ import TypedPackage from "../pages/TypedPackage";
 import StoryDetail from "../pages/StoryDetail";
 import AllStories from "../pages/AllStories";
 import AllPackages from "../pages/AllPackages";
+import Error from "../pages/Error";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <Layout></Layout>,
+      errorElement: <Error></Error>,
       children: [
         {
-            path: '/',
-            element:<Home></Home>
+          path: '/',
+          element:<Home></Home>,
         },
         {
             path: '/community',
@@ -123,7 +125,7 @@ import AllPackages from "../pages/AllPackages";
           element: <AddPackage></AddPackage>
         },
         
-      ]
-    }
+      ],
+    },
   ]);
   export default router 
