@@ -22,4 +22,15 @@ https://backpackers-2464a.web.app/
 - tourists can share their travel stories. 
 - Full responsive on mobile, tablet and desktop. 
 
+## Installation
 
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/webweavers2046/plan-pixel.git
+
+2. Install dependencies:
+
+   ```bash
+   cd backpackers
+   npm install
