@@ -5,7 +5,7 @@
 - Password : 123456  
 
 ## Live site URL
-https://backpackers-2464a.web.app/
+[Live Demo](https://backpackers-2464a.web.app/)
 
 
 
@@ -27,7 +27,7 @@ https://backpackers-2464a.web.app/
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/webweavers2046/plan-pixel.git
+   git clone https://github.com/jonayeds/Backpacker-client.git
 
 2. Install dependencies:
 
